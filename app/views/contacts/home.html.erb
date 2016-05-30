@@ -1,0 +1,47 @@
+
+<div id='controls'>
+
+
+  <button id='btn-teams'>Bundesliga</button>
+  <button id='btn-fixtures'>Ligue 1</button>
+  <button id='btn-players'>Ligue 2</button>
+  <button id='btn-players'>Premier League</button>
+  <button id='btn-players'>Primera Division</button>
+  <button id='btn-players'>Segunda Division</button>
+  <button id='btn-players'>Serie A</button>
+  <button id='btn-players'>Primeira Liga</button>
+  <button id='btn-players'>Eredivisie</button>
+  <button id='btn-players'>Primeira Liga</button>
+</div>
+  <div id='fff', class='stuff'>
+    <h3><%= @get['leagueCaption']%></h3>
+    <table>
+      <tr>
+        <th>position</th>
+        <th>teamName</th>
+        <th>playedGames</th>
+        <th>points</th>
+        <th>goals</th>
+        <th>goalsAgainst</th>
+        <th>goalDifference</th>
+        <th>playedGames</th>
+        <th>draws</th>
+        <th>losses</th>
+      </tr>
+<%20.times do |i| %>
+
+  <tr>
+    <td><%= @get['standing'][i]['position']%></td>
+    <td><%= @get['standing'][i]['teamName'] %></td>
+    <td><%= @get['standing'][i]['playedGames'] %></td>
+    <td><%= @get['standing'][i]['points']%></td>
+    <td><%= @get['standing'][i]['goals'] %></td>
+    <td><%= @get['standing'][i]['goalsAgainst']%></td>
+    <td><%= @get['standing'][i]['goalDifference'] %></td>
+    <td><%= @get['standing'][i]['playedGames'] %></td>
+    <td><%= @get['standing'][i]['draws']%></td>
+    <td><%= @get['standing'][i]['losses'] %></td>
+  </tr>
+
+<% end %>
+</table>

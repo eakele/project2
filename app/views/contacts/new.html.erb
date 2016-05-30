@@ -1,0 +1,57 @@
+<% if flash[:errors] %>
+    <p> <%= flash[:errors] %></p>
+<% end %>
+<h1>Newform</h1>
+<%= form_for :contact, url: contacts_path do |f| %>
+<div class="field">
+  <%= f.label :first_name %><br>
+  <%= f.text_field :first_name %>
+</div>
+<div class="field">
+  <%= f.label :last_name %><br>
+  <%= f.text_field :last_name %>
+</div>
+<div class="field">
+  <%= f.label :email %><br>
+  <%= f.text_field :email %>
+</div>
+<div class="field">
+  <%= f.label :phone_mobile %><br>
+  <%= f.number_field :phone_mobile %>
+</div>
+<div class="field">
+  <%= f.label :phone_work %><br>
+  <%= f.number_field :phone_work %>
+</div>
+<div class="field">
+  <%= f.label :street %><br>
+  <%= f.text_field :street %>
+</div>
+<div class="field">
+  <%= f.label :city %><br>
+  <%= f.text_field :city %>
+</div>
+<div class="field">
+  <%= f.label :zip_postal_code %><br>
+  <%= f.number_field :zip_postal_code %>
+</div>
+<div class="field">
+  <%= f.label :state_province %><br>
+  <%= f.text_field :state_province %>
+</div>
+<div class="field">
+  <%= f.label :country_region %><br>
+  <%= f.text_field :country_region %>
+</div>
+<div class="field">
+  <%= f.label :nick_name %><br>
+  <%= f.text_field :nick_name %>
+</div>
+<div class="field">
+  <%= f.label :personal_web_page %><br>
+  <%= f.text_field :personal_web_page %>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>
