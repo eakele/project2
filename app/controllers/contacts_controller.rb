@@ -13,11 +13,11 @@ class ContactsController < ApplicationController
 
    # grabbing API
      base_uri = 'http://api.football-data.org'
-    @get = HTTParty.get("#{base_uri}/v1/soccerseasons/398/leagueTable",:headers => {"X-Auth-Token" => '844aa49bbcfe45e284ab09b02bfce32b' })
+    @get = HTTParty.get("#{base_uri}/v1/soccerseasons/398/leagueTable",:headers => {"X-Auth-Token" => 'k' })
   end
   def teams
     base_uri = 'http://api.football-data.org'
-   @get = HTTParty.get("#{base_uri}/v1/soccerseasons/398/teams",:headers => {"X-Auth-Token" => '844aa49bbcfe45e284ab09b02bfce32b' })
+   @get = HTTParty.get("#{base_uri}/v1/soccerseasons/398/teams",:headers => {"X-Auth-Token" => 'b' })
   end
 
 
