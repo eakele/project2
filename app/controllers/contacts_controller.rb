@@ -8,27 +8,12 @@ class ContactsController < ApplicationController
   end
   # Index page '/'
   def home
-<<<<<<< HEAD
-     # grabbing API
-       base_uri = 'http://api.football-data.org'
-      @get = HTTParty.get("#{base_uri}/v1/soccerseasons/398/leagueTable",:headers => {"X-Auth-Token" => '844aa49bbc09b02bfce32b' })
-    end
-    def teams
-      base_uri = 'http://api.football-data.org'
-     @get = HTTParty.get("#{base_uri}/v1/soccerseasons/398/teams",:headers => {"X-Auth-Token" => '844aa49bbc09b02bfce32b' })
-    end
-=======
-  #  @users = User.all
-  #  @contacts = Contact.all
-
-   # grabbing API
-     base_uri = 'http://api.football-data.org'
-    @get = HTTParty.get("#{base_uri}/v1/soccerseasons/398/leagueTable",:headers => {"X-Auth-Token" => 'k' })
-  end
-  def teams
+    # grabbing API
     base_uri = 'http://api.football-data.org'
-   @get = HTTParty.get("#{base_uri}/v1/soccerseasons/398/teams",:headers => {"X-Auth-Token" => 'b' })
->>>>>>> 57c090caf8e37c16ea967f2797f9ccf9ce9efbaa
+    key = '844aa284ab09b02bfce32b'
+    @soccer_season = HTTParty.get("#{base_uri}/v1/soccerseasons",:headers => {"X-Auth-Token" => key })
+    @teams = HTTParty.get("#{base_uri}/v1/soccerseasons/398/teams",:headers => {"X-Auth-Token" => key })
+    @premier_league = HTTParty.get("#{base_uri}/v1/soccerseasons/398/leagueTable",:headers => {"X-Auth-Token" => key })
   end
   def show
   end
