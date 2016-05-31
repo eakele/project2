@@ -8,33 +8,21 @@ class ContactsController < ApplicationController
   end
   # Index page '/'
   def home
-  #  @users = User.all
-  #  @contacts = Contact.all
-
-   # grabbing API
-     base_uri = 'http://api.football-data.org'
-    @get = HTTParty.get("#{base_uri}/v1/soccerseasons/398/leagueTable",:headers => {"X-Auth-Token" => '844aa49bbcfe45e284ab09b02bfce32b' })
-  end
-  def teams
+     # grabbing API
     base_uri = 'http://api.football-data.org'
-   @get = HTTParty.get("#{base_uri}/v1/soccerseasons/398/teams",:headers => {"X-Auth-Token" => '844aa49bbcfe45e284ab09b02bfce32b' })
+    key = '844aa284ab09b02bfce32b'
+    @soccer_season = HTTParty.get("#{base_uri}/v1/soccerseasons",:headers => {"X-Auth-Token" => key })
+    @teams = HTTParty.get("#{base_uri}/v1/soccerseasons/398/teams",:headers => {"X-Auth-Token" => key })
+    @premier_league = HTTParty.get("#{base_uri}/v1/soccerseasons/398/leagueTable",:headers => {"X-Auth-Token" => key })
   end
-
-
-  #  soccer = HTTParty.get('http://api.football-data.org/v1/soccerseasons/?season=2015')
-   # scrapyscrape = HTTParty.get('http://www.news.com.au/breaking-news')
-
-   # collect our scrap data
-   # @news = Nokogiri::HTML(scrapyscrape).inspect
-   # making accessible by ERB under a variable
-  # GET /contacts/1
-  # GET /contacts/1.json
   def show
   end
 
   # GET /contacts/new
   def new
     @contact = Contact.new
+
+
   end
 
   # GET /contacts/1/edit
