@@ -9,10 +9,13 @@ Rails.application.routes.draw do
   # post '/login' => 'sessions#create'
   # get '/logout' => 'sessions#destroy'
 
-   get '/' => 'contacts#home'
-  get '/login' => 'sessions#new'
+    root to: 'contacts#index'
+    get '/' => 'contacts#index'
+    get '/login' => 'sessions#new'
     post '/login' => 'sessions#create'
-    get '/logout' => 'sessions#destroy'
+    post '/logout' => 'sessions#destroy'
+
+    post '/contacts' => 'contacts#create'
 
     get '/signup' => 'users#new'
     post '/users' => 'users#create'

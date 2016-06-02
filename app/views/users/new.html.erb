@@ -1,23 +1,37 @@
-<h1>Sign up!</h1>
 
-<%= form_for :user, url: '/users', method: "post" do |f| %>
-<div class="field">
-  <%= f.label :name %><br>
-  <%= f.text_field :name %>
-</div>
-<div class="field">
-  <%= f.label :email %><br>
-  <%= f.text_field :email %>
-</div>
-<div class="field">
-  <%= f.label :password %><br>
-  <%= f.password_field :password %>
-</div>
-<div class="field">
-  <%= f.label :password_confirmation %><br>
-  <%= f.password_field :password_confirmation %>
-  <div class="actions">
-  <br>  <%= f.submit %>
-  </div>
-
-<% end %>
+      <div id="header">
+        <h1>Sign up</h1>
+        <ul>
+          <li><a href="#">Link1</a></li>
+          <li><a href="#">Link2</a></li>
+          <li><a href="#">Link3</a></li>
+        </ul>
+      </div>
+      <div id="content">
+        <%= form_for :user, url: '/users', method: "post" do |f| %>
+        <table id="tbl-signup">
+          <tr>
+            <td id="">Name:</td>
+            <td><%= f.text_field :name %></td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td><%= f.text_field :email %></td>
+          </tr>
+          <tr>
+            <td>Password:</td>
+            <td><%= f.password_field :password %></td>
+          </tr>
+          <tr>
+            <td>Password Confirmation:</td>
+            <td><%= f.password_field :password_confirmation %></td>
+          </tr>
+          <tr>
+            <td><%= f.submit "Sign up"%></td>
+            <td><br /></td>
+          </tr>
+        </table>
+        <% end %>
+      </div>
+      <div id="nav">
+      </div>

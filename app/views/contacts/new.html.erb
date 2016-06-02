@@ -2,7 +2,7 @@
     <p> <%= flash[:errors] %></p>
 <% end %>
 <h1>Newform</h1>
-<%= form_for :contact, url: contacts_path do |f| %>
+<%= form_for :contact, url: '/contacts' do |f| %>
 <div class="field">
   <%= f.label :first_name %><br>
   <%= f.text_field :first_name %>

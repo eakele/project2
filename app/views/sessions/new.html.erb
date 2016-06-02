@@ -1,10 +1,17 @@
 <h1> Login </h1>
 <%= form_tag '/login',class: "login", method: "post" do %>
-<div class="field">
-  Email: <%= text_field_tag :email %>
-  <br>Password: <%= password_field_tag :password %>
-  </div>
-  <div class="actions">
-  <br><%= submit_tag "Submit" %>
-  </div>
+<table id="tbl-login">
+  <tr>
+    <td id="">Email:</td>
+    <td><%= text_field_tag :email %></td>
+  </tr>
+  <tr>
+    <td>Password:</td>
+    <td><%= password_field_tag :password, '', :class=>"txt-password"%></td>
+  </tr>
+  <tr>
+    <td><%= submit_tag "Submit" %></td>
+    <td><br /></td>
+  </tr>
+</table>
 <% end %>

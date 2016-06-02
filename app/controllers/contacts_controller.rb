@@ -10,19 +10,21 @@ class ContactsController < ApplicationController
   def home
     # grabbing API
     base_uri = 'http://api.football-data.org'
-    key = '844aa284ab09b02bfce32b'
+    key = '844aa49bbcfe45e284ab09b02bfce32b'
     @soccer_season = HTTParty.get("#{base_uri}/v1/soccerseasons",:headers => {"X-Auth-Token" => key })
     @teams = HTTParty.get("#{base_uri}/v1/soccerseasons/398/teams",:headers => {"X-Auth-Token" => key })
     @premier_league = HTTParty.get("#{base_uri}/v1/soccerseasons/398/leagueTable",:headers => {"X-Auth-Token" => key })
   end
   def show
+    # @contact = user.contacts
   end
 
   # GET /contacts/new
   def new
-    @contact = Contact.new
-
-
+    # if current_user.contacts
+    #   redirect_to root_path
+    # end
+    # @contact = Contact.new
   end
 
   # GET /contacts/1/edit
@@ -36,7 +38,7 @@ class ContactsController < ApplicationController
     @contact.user_id = current_user.id
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
+        format.html { redirect_to '/', notice: 'Contact was successfully created.' }
         format.json { render :show, status: :created, location: @contact }
       else
         format.html { render :new }
