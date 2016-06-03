@@ -1,17 +1,19 @@
-<h1> Login </h1>
+<h1>
+    Login
+</h1>
+<% if flash[:error] %>
+    <div class="alert"><%= flash[:error] %></div>
+<% end %>
 <%= form_tag '/login',class: "login", method: "post" do %>
-<table id="tbl-login">
-  <tr>
-    <td id="">Email:</td>
-    <td><%= text_field_tag :email %></td>
-  </tr>
-  <tr>
-    <td>Password:</td>
-    <td><%= password_field_tag :password, '', :class=>"txt-password"%></td>
-  </tr>
-  <tr>
-    <td><%= submit_tag "Submit" %></td>
-    <td><br /></td>
-  </tr>
-</table>
+<div class="divTable">
+    <div class="divRow">
+        <div class="divCell">Email:</div>
+        <div class="divCell"><%= text_field_tag :email %></div>
+    </div>
+    <div class="divRow">
+        <div class="divCell">Password:</div>
+        <div class="divCell"><%= password_field_tag :password, '', :class=>"txt-password"%></div>
+    </div>
+    <%= submit_tag "Submit" %>
+</div>
 <% end %>

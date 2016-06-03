@@ -1,37 +1,27 @@
-
-      <div id="header">
-        <h1>Sign up</h1>
-        <ul>
-          <li><a href="#">Link1</a></li>
-          <li><a href="#">Link2</a></li>
-          <li><a href="#">Link3</a></li>
-        </ul>
-      </div>
-      <div id="content">
-        <%= form_for :user, url: '/users', method: "post" do |f| %>
-        <table id="tbl-signup">
-          <tr>
-            <td id="">Name:</td>
-            <td><%= f.text_field :name %></td>
-          </tr>
-          <tr>
-            <td>Email:</td>
-            <td><%= f.text_field :email %></td>
-          </tr>
-          <tr>
-            <td>Password:</td>
-            <td><%= f.password_field :password %></td>
-          </tr>
-          <tr>
-            <td>Password Confirmation:</td>
-            <td><%= f.password_field :password_confirmation %></td>
-          </tr>
-          <tr>
-            <td><%= f.submit "Sign up"%></td>
-            <td><br /></td>
-          </tr>
-        </table>
-        <% end %>
-      </div>
-      <div id="nav">
-      </div>
+<h1>Sign up</h1>
+<% if flash[:error] %>
+    <div class="alert"><%= flash[:error] %></div>
+<% end %>
+<div id="content">
+    <%= form_for :user, url: '/users', method: "post" do |f| %>
+    <div class="divTable">
+        <div class="divRow">
+            <div class="divCell">Name:</div>
+            <div class="divCell"><%= f.text_field :name %></div>
+        </div>
+        <div class="divRow">
+            <div class="divCell">Email:</div>
+            <div class="divCell"><%= f.text_field :email %></div>
+        </div>
+        <div class="divRow">
+            <div class="divCell">Password:</div>
+            <div class="divCell"><%= f.password_field :password %></div>
+        </div>
+        <div class="divRow">
+            <div class="divCell">Password Confirmation:</div>
+            <div class="divCell"><%= f.password_field :password_confirmation %></div>
+        </div>
+        <%= f.submit "Sign up" %>
+    </div>
+    <% end %>
+</div>

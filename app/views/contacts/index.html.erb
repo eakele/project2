@@ -14,7 +14,7 @@ Password:
 <%= submit_tag "Log In"%>
 <% end %>
 <% else %>
-<p>Hi <%= current_user.email%>you are logged in!</p>
+<p>Hi <%= current_user.name%> you are logged in!</p>
 <p><%= current_user.name %></p>
 <%= button_to "View Table" %><br>
 <%= button_to "View Leagu" %><br>

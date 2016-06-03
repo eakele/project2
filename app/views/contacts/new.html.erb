@@ -1,25 +1,26 @@
 <% if flash[:errors] %>
-    <p> <%= flash[:errors] %></p>
+<p>
+    <%= flash[:errors] %></p>
 <% end %>
 <h1>Newform</h1>
 <%= form_for :contact, url: '/contacts' do |f| %>
-<div class="field">
-  <%= f.label :first_name %><br>
-  <%= f.text_field :first_name %>
-</div>
-<div class="field">
-  <%= f.label :last_name %><br>
-  <%= f.text_field :last_name %>
-</div>
-<div class="field">
-  <%= f.label :email %><br>
-  <%= f.text_field :email %>
-</div>
-<div class="field">
-  <%= f.label :phone_mobile %><br>
-  <%= f.text_field :phone_mobile %>
-</div>
-<div class="actions">
-  <%= f.submit %>
+<div class="divTable">
+    <div class="divRow">
+        <div class="divCell">First Name:</div>
+        <div class="divCell"><%= f.text_field :first_name %></div>
+    </div>
+    <div class="divRow">
+        <div class="divCell">Last Name:</div>
+        <div class="divCell"><%= f.text_field :last_name %></div>
+    </div>
+    <div class="divRow">
+        <div class="divCell">Email:</div>
+        <div class="divCell"><%= f.text_field :email %></div>
+    </div>
+    <div class="divRow">
+        <div class="divCell">Email:</div>
+        <div class="divCell"><%= f.text_field :phone_mobile %></div>
+    </div>
+    <%= submit_tag "Submit" %>
 </div>
 <% end %>

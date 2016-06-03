@@ -40,6 +40,7 @@ class ContactsController < ApplicationController
     @contact.user_id = current_user.id
     @contact.save
       if @contact.save
+        flash[:notice] = "Contact successfully created"
         redirect_to '/contacts/show'
       else
         redirect_to '/contacts/new'
@@ -51,6 +52,7 @@ class ContactsController < ApplicationController
   def update
       contact = Contact.find(params[:id])
       if contact.update(contact_params)
+        flash[:notice] = "Contact successfully updated"
         redirect_to '/contacts/show'
       else
         redirect_to '/contacts/new'
@@ -62,6 +64,7 @@ class ContactsController < ApplicationController
   def destroy
     contact = Contact.find(params[:id])
     if contact.delete
+      flash[:notice] = "Contact successfully deleted"
       redirect_to '/contacts/show'
     else
       redirect_to '/contacts/new'

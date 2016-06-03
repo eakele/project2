@@ -1,7 +1,11 @@
 <h2><%current_user.name%></h2>
+
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
 <table>
   <tr><th>First name</th><th>Last Name</th>
-    <th>Email</th><th>Phone number</th>
+    <th>Email</th><th>Phone number</th><th>Update Record</th><th>Delete Record</th>
   </tr>
 <% @contacts.each do |contact| %>
   <tr>
