@@ -1,6 +1,8 @@
-<h1>Editing Contact</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @contact %> |
-<%= link_to 'Back', contacts_path %>
+<h1>Update contact</h1>
+<%= form_for @contact, method: :patch do |f| %>
+  First Name: <%= f.text_field  :first_name %> <br>
+  Last Name: <%= f.text_field :last_name %><br>
+  Email: <%= f.text_field :email %><br>
+  Phone: <%= f.text_field :phone_mobile %><br>
+  <%= f.submit("Update Contact") %><br>
+<% end %>

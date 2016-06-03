@@ -22,6 +22,6 @@ Password:
 <%= button_to "Log Out",:controller => 'sessions', :action => 'destroy' %><br>
 <button><a href="/contacts/new">Create New Contact</a></button>
 <button><a href="/contacts/edit">Update Contact</a></button>
-<button><a href= <%#{@contact.first_name}%> >View Contact</a></button>
+<button><a href="/contacts/show" >View Contact</a></button>
 
 <% end %>

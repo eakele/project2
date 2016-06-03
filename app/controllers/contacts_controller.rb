@@ -1,10 +1,11 @@
 class ContactsController < ApplicationController
-  before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action  only: [:show, :edit, :update, :destroy]
 
   # GET /contacts
   # GET /contacts.json
   def index
-    # @contacts = Contact.all
+    @user = current_user
+    @contacts = @user.contacts.order("created_at DESC")
   end
   # Index page '/'
   def home
@@ -15,20 +16,21 @@ class ContactsController < ApplicationController
     @teams = HTTParty.get("#{base_uri}/v1/soccerseasons/398/teams",:headers => {"X-Auth-Token" => key })
     @premier_league = HTTParty.get("#{base_uri}/v1/soccerseasons/398/leagueTable",:headers => {"X-Auth-Token" => key })
   end
-  def show
-    # @contact = user.contacts
-  end
 
+  # def all
+  #   @contacts = Contact.where(user_id: current_user.id)
+  #   render :show
+  # end
+  def show
+    @contacts = Contact.where(user_id: current_user.id)
+  end
   # GET /contacts/new
   def new
-    # if current_user.contacts
-    #   redirect_to root_path
-    # end
-    # @contact = Contact.new
   end
 
   # GET /contacts/1/edit
   def edit
+    @contact = Contact.find(params[:id])
   end
 
   # POST /contacts
@@ -36,38 +38,33 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     @contact.user_id = current_user.id
-    respond_to do |format|
+    @contact.save
       if @contact.save
-        format.html { redirect_to '/', notice: 'Contact was successfully created.' }
-        format.json { render :show, status: :created, location: @contact }
+        redirect_to '/contacts/show'
       else
-        format.html { render :new }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
-      end
+        redirect_to '/contacts/new'
     end
   end
 
   # PATCH/PUT /contacts/1
   # PATCH/PUT /contacts/1.json
   def update
-    respond_to do |format|
-      if @contact.update(contact_params)
-        format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
-        format.json { render :show, status: :ok, location: @contact }
+      contact = Contact.find(params[:id])
+      if contact.update(contact_params)
+        redirect_to '/contacts/show'
       else
-        format.html { render :edit }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
+        redirect_to '/contacts/new'
       end
-    end
   end
 
   # DELETE /contacts/1
   # DELETE /contacts/1.json
   def destroy
-    @contact.destroy
-    respond_to do |format|
-      format.html { redirect_to contacts_url, notice: 'Contact was successfully destroyed.' }
-      format.json { head :no_content }
+    contact = Contact.find(params[:id])
+    if contact.delete
+      redirect_to '/contacts/show'
+    else
+      redirect_to '/contacts/new'
     end
   end
 
@@ -79,6 +76,6 @@ class ContactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
-      params.require(:contact).permit(:first_name, :last_name, :email, :phone_mobile, :phone_work, :street, :city, :zip_postal_code, :state_province, :country_region, :nick_name, :personal_web_pages, :user_id)
+      params.require(:contact).permit(:first_name, :last_name, :email, :phone_mobile, :user_id)
     end
 end
