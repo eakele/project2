@@ -13,9 +13,16 @@
         </div>
         <nav>
             <ul id="nav">
-                <%= button_to "Sing up", new_users_path,:class => "button", :method => :get %>
+                <%= button_to "Edit Contact", edit_contact_path(session[:user_id]),:class => "button", :method => :get %>
                 <%= button_to "Log in", login_path %>
+                <%= button_to "Log Out",:controller => 'sessions', :action => 'destroy' %>
+                <%= button_to "Create New Contact",new_contact_path,:class => "button", :method => :get %>
+                <%= button_to "Home",root_path,:class => "button", :method => :get %>
+                <div class="selected-team">
+                    <button id="players" type="submit">View Players</button>
+                </div>
             </ul>
+
         </nav>
 
         <div id="section">

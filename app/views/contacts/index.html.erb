@@ -1,5 +1,4 @@
-
-<h1>Welcome </h1>
+<h1></h1>
 <% if session[:user_id].nil?%>
 <%= form_tag '/login' do%>
 <% if flash[:error] %>
@@ -8,20 +7,252 @@
 <% if flash[:message]%>
 <p><%= flash[:message]%></p>
 <% end %>
-Email:<%= text_field_tag :email%><br>
-Password:
-<%= password_field_tag :password%><br>
-<%= submit_tag "Log In"%>
+<div class="divTable">
+    <div class="divRow">
+        <div class="divCell">Email:</div>
+        <div class="divCell"><%= text_field_tag :email %></div>
+    </div>
+    <div class="divRow">
+        <div class="divCell">Password:</div>
+        <div class="divCell"><%= password_field_tag :password, '', :class=>"txt-password"%></div>
+    </div>
+    <%= submit_tag "Log In" %>
+</div>
 <% end %>
 <% else %>
-<p>Hi <%= current_user.name%> you are logged in!</p>
-<p><%= current_user.name %></p>
-<%= button_to "View Table" %><br>
-<%= button_to "View Leagu" %><br>
+<br>
+<h3>Hi
+    <%= current_user.name%>
+    you are logged in!</h3>
 
-<%= button_to "Log Out",:controller => 'sessions', :action => 'destroy' %><br>
-<button><a href="/contacts/new">Create New Contact</a></button>
-<button><a href="/contacts/edit">Update Contact</a></button>
-<button><a href="/contacts/show" >View Contact</a></button>
+<div class="nav-top">
+    <button id="leagu" type="submit">Table</button>
+    <button id="team" type="submit">Teams</button>
+    <button id="season" type="submit">Seasons</button>
+    <button id="fixtures" type="submit">Fixture</button>
+</div>
+
+<div class="top-four">
+    <button id="leicester" type="submit">Leicester City</button>
+    <button id="arsenal" type="submit">Arsenal</button>
+    <button id="totenham" type="submit">Tottenham Hotspur</button>
+    <button id="man-city" type="submit">Manchester City</button>
+</div>
+
+<div class='leicester-fixtures'>
+    <table>
+      <tr>
+          <th colspan="4">
+              <h3>Leicester City FC fixtures</h3>
+          </th>
+          <th colspan="4">
+              <img class="thumbnail" src="<%= @leicester_logo["crestUrl"]%>" alt="">
+          </th>
+      </tr>
+        <tr>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Matchday</th>
+            <th>Home team name</th>
+            <th>Away team name</th>
+            <th>Home team result</th>
+            <th>Away team result</th>
+        </tr>
+        <% @leicester["count"].to_i.times do |i|%>
+        <tr>
+            <td><%= @leicester['fixtures'][i]['date']%></td>
+            <td><%= @leicester['fixtures'][i]['status'] %></td>
+            <td><%= @leicester['fixtures'][i]['matchday'] %></td>
+            <td><%= @leicester['fixtures'][i]['homeTeamName'] %></td>
+            <td><%= @leicester['fixtures'][i]['awayTeamName']%></td>
+            <td><%= @leicester['fixtures'][i]['result']['goalsHomeTeam'] %></td>
+            <td><%= @leicester['fixtures'][i]['result']['goalsAwayTeam']%></td>
+        </tr>
+        <% end %>
+    </table>
+</div>
+
+<div class='arsenal-fixtures'>
+    <table>
+        <tr>
+            <th colspan="4">
+                <h3>Arsenal FC fixtures</h3>
+            </th>
+            <th colspan="4">
+                <img class="thumbnail" src="<%= @arsenal_logo["crestUrl"]%>" alt="">
+            </th>
+        </tr>
+        <tr>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Matchday</th>
+            <th>Home team name</th>
+            <th>Away team name</th>
+            <th>Home team result</th>
+            <th>Away team result</th>
+        </tr>
+        <% @arsenal["count"].to_i.times do |i|%>
+        <tr>
+            <td><%= @arsenal['fixtures'][i]['date']%></td>
+            <td><%= @arsenal['fixtures'][i]['status'] %></td>
+            <td><%= @arsenal['fixtures'][i]['matchday'] %></td>
+            <td><%= @arsenal['fixtures'][i]['homeTeamName'] %></td>
+            <td><%= @arsenal['fixtures'][i]['awayTeamName']%></td>
+            <td><%= @arsenal['fixtures'][i]['result']['goalsHomeTeam'] %></td>
+            <td><%= @arsenal['fixtures'][i]['result']['goalsAwayTeam']%></td>
+        </tr>
+        <% end %>
+    </table>
+</div>
+
+<div class='totenham-fixtures'>
+    <table>
+        <tr>
+            <th colspan="4">
+                <h3>Tottenham Hotspur FC fixtures</h3>
+            </th>
+            <th colspan="4">
+                <img class="thumbnail" src="<%= @totenham_logo["crestUrl"]%>" alt="">
+            </th>
+        </tr>
+        <tr>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Matchday</th>
+            <th>Home team name</th>
+            <th>Away team name</th>
+            <th>Home team result</th>
+            <th>Away team result</th>
+        </tr>
+        <% @totenham["count"].to_i.times do |i|%>
+        <tr>
+            <td><%= @totenham['fixtures'][i]['date']%></td>
+            <td><%= @totenham['fixtures'][i]['status'] %></td>
+            <td><%= @totenham['fixtures'][i]['matchday'] %></td>
+            <td><%= @totenham['fixtures'][i]['homeTeamName'] %></td>
+            <td><%= @totenham['fixtures'][i]['awayTeamName']%></td>
+            <td><%= @totenham['fixtures'][i]['result']['goalsHomeTeam'] %></td>
+            <td><%= @totenham['fixtures'][i]['result']['goalsAwayTeam']%></td>
+        </tr>
+        <% end %>
+    </table>
+</div>
+
+<div class='man-city-fixtures'>
+    <table>
+        <tr>
+            <th colspan="4">
+                <h3>Manchester city FC fixtures</h3>
+            </th>
+            <th colspan="4">
+                <img class="thumbnail" src="<%= @man_city_logo["crestUrl"]%>" alt="">
+            </th>
+        </tr>
+        <tr>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Matchday</th>
+            <th>Home team name</th>
+            <th>Away team name</th>
+            <th>Home team result</th>
+            <th>Away team result</th>
+        </tr>
+        <% @man_city_fixture["count"].to_i.times do |i|%>
+        <tr>
+            <td><%= @man_city_fixture['fixtures'][i]['date']%></td>
+            <td><%= @man_city_fixture['fixtures'][i]['status'] %></td>
+            <td><%= @man_city_fixture['fixtures'][i]['matchday'] %></td>
+            <td><%= @man_city_fixture['fixtures'][i]['homeTeamName'] %></td>
+            <td><%= @man_city_fixture['fixtures'][i]['awayTeamName']%></td>
+            <td><%= @man_city_fixture['fixtures'][i]['result']['goalsHomeTeam'] %></td>
+            <td><%= @man_city_fixture['fixtures'][i]['result']['goalsAwayTeam']%></td>
+        </tr>
+        <% end %>
+    </table>
+</div>
+
+<div class='leagu'>
+    <h3><%= @premier_league['leagueCaption']%></h3>
+    <table>
+        <tr>
+            <th>Position</th>
+            <th>Team Name</th>
+            <th>Played Games</th>
+            <th>Points</th>
+            <th>Goals</th>
+            <th>Goals Against</th>
+            <th>Goal Difference</th>
+            <th>Played Games</th>
+            <th>Draws</th>
+            <th>Losses</th>
+        </tr>
+        <% 20.times do |i| %>
+        <tr>
+            <td><%= @premier_league['standing'][i]['position']%></td>
+            <td><%= @premier_league['standing'][i]['teamName'] %></td>
+            <td><%= @premier_league['standing'][i]['playedGames'] %></td>
+            <td><%= @premier_league['standing'][i]['points']%></td>
+            <td><%= @premier_league['standing'][i]['goals'] %></td>
+            <td><%= @premier_league['standing'][i]['goalsAgainst']%></td>
+            <td><%= @premier_league['standing'][i]['goalDifference'] %></td>
+            <td><%= @premier_league['standing'][i]['playedGames'] %></td>
+            <td><%= @premier_league['standing'][i]['draws']%></td>
+            <td><%= @premier_league['standing'][i]['losses'] %></td>
+        </tr>
+        <% end %>
+    </table>
+</div>
+
+<div class="team">
+    <table>
+        <tr>
+            <h3>Teams detail</h3>
+        </tr>
+        <tr>
+            <th>Team Name</th>
+            <th>Team Code</th>
+            <th>Short Name</th>
+            <th>Squad Market Value</th>
+            <th>Team Logo</th>
+        </tr>
+        <% @teams["count"].to_i.times do |i| %>
+        <tr>
+            <td><%= @teams["teams"][i]["name"]%></td>
+            <td><%= @teams["teams"][i]["code"]%></td>
+            <td><%= @teams["teams"][i]["shortName"]%></td>
+            <td><%= @teams["teams"][i]["squadMarketValue"]%></td>
+            <td><img class="thumbnail" src="<%= @teams["teams"][i][" crestUrl"]%>" alt=""></td>
+        </tr>
+        <% end %>
+    </table>
+</div>
+
+<div class="soccer-season">
+    <table>
+        <tr>
+            <h3>Leagues and stats</h3>
+        </tr>
+        <tr>
+            <th>Caption</th>
+            <th>Number of Match days</th>
+            <th>Number of Teams</th>
+            <th>Number of Games</th>
+            <th>Year</th>
+        </tr>
+        <%10.times do |i|%>
+        <tr>
+            <td><%=@soccer_season[i]["caption"] %></td>
+            <td><%=@soccer_season[i]["numberOfMatchdays"] %></td>
+            <td><%=@soccer_season[i]["numberOfTeams"] %></td>
+            <td><%=@soccer_season[i]["numberOfGames"] %></td>
+            <td><%=@soccer_season[i]["year"] %></td>
+        </tr>
+        <% end %>
+    </table>
+</div>
+
+<!-- <button>
+    <a href="/contacts/show">View Contact</a>
+</button> -->
 
 <% end %>
