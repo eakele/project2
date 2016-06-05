@@ -1,6 +1,6 @@
 <h1>Sign up</h1>
 <% if flash[:signuperror] %>
-    <div class="signup-alert"><%= flash[:error] %></div>
+    <div class="signup-alert"><%= flash[:signuperror]["message"].join(', ') %></div>
 <% end %>
 <div id="content">
     <%= form_for :user, url: '/users', method: "post" do |f| %>

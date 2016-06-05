@@ -1,10 +1,11 @@
+<!--Check if the users is logged in before creating a new contact if not redirect to login form  -->
 <% if session[:user_id].nil?%>
 <%flash[:contacterror] = "Please login or signup"%>
 <%= form_tag '/login' do%>
 <% if flash[:contacterror] %>
 <p><h3><%= flash[:contacterror]%></h3></p>
 <% end %>
-
+<!--if not loged in this form will be shown which is a login form  -->
 <div class="divTable">
     <div class="divRow">
         <div class="divCell">Email:</div>
@@ -19,6 +20,7 @@
 <%= link_to "Sign up", new_users_path, :class => "btn-signup" %>
 <% end %>
 <% else %>
+<!--This is the actual contact form where you can add new contacts after logged in  -->
 <h1>Newform</h1>
 <%= form_for :contact, url: '/contacts' do |f| %>
 <div class="divTable">
@@ -35,7 +37,7 @@
         <div class="divCell"><%= f.text_field :email %></div>
     </div>
     <div class="divRow">
-        <div class="divCell">Email:</div>
+        <div class="divCell">Phone No.:</div>
         <div class="divCell"><%= f.text_field :phone_mobile %></div>
     </div>
     <%= submit_tag "Submit" %>

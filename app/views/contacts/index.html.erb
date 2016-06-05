@@ -1,4 +1,4 @@
-<h1></h1>
+<!--check if the user is loged in if not display message and redirect to login form -->
 <% if session[:user_id].nil?%>
 <%flash[:error] = "Please login or signup"%>
 <%= form_tag '/login' do%>
@@ -8,6 +8,7 @@
 <% if flash[:message]%>
 <p><%= flash[:message]%></p>
 <% end %>
+<!--the login form  -->
 <div class="divTable">
     <div class="divRow">
         <div class="divCell">Email:</div>
@@ -22,25 +23,29 @@
 <%= link_to "Sign up", new_users_path, :class => "btn-signup" %>
 <% end %>
 <% else %>
+<!-- authenticated users will come up to here  -->
 <br>
 <h3>Hi
     <%= current_user.name%>
     you are logged in!</h3>
-
+<!--This buttons enables the user to navigate to different
+  generic services from the API -->
 <div class="nav-top">
     <button id="leagu" type="submit">Table</button>
     <button id="team" type="submit">Teams</button>
     <button id="season" type="submit">Seasons</button>
     <button id="fixtures" type="submit">Fixture</button>
 </div>
-
+<!--This buttons enable the user to navigate to differnet
+specific team level services from the API-->
 <div class="top-four">
     <button id="leicester" type="submit">Leicester City</button>
     <button id="arsenal" type="submit">Arsenal</button>
     <button id="tottenham" type="submit">Tottenham Hotspur</button>
     <button id="man-city" type="submit">Manchester City</button>
 </div>
-
+<!--This division iterates through the fixure data of Leicester city
+football club from the API  -->
 <div class='leicester-fixtures'>
     <table>
       <tr>
@@ -73,7 +78,8 @@
         <% end %>
     </table>
 </div>
-
+<!--This division iterates through the fixure data of Arsenal
+football club from the API  -->
 <div class='arsenal-fixtures'>
     <table>
         <tr>
@@ -106,7 +112,8 @@
         <% end %>
     </table>
 </div>
-
+<!--This division iterates through the fixure data of Tottenham hotspur
+football club from the API  -->
 <div class='tottenham-fixtures'>
     <table>
         <tr>
@@ -139,7 +146,8 @@
         <% end %>
     </table>
 </div>
-
+<!--This division iterates through the fixure data of Manchister city
+football club from the API  -->
 <div class='man-city-fixtures'>
     <table>
         <tr>
@@ -172,7 +180,8 @@
         <% end %>
     </table>
 </div>
-
+<!--This division iterates through the table of the english premier league data
+ from the API  -->
 <div class='leagu'>
       <table>
       <tr>
@@ -208,7 +217,8 @@
         <% end %>
     </table>
 </div>
-
+<!--This division iterates through teams in the english premier league
+that have more detail of each football club from the API  -->
 <div class="team">
     <table>
         <tr>
@@ -235,6 +245,8 @@
         <% end %>
     </table>
 </div>
+<!--This division iterates through all the soccer seasons in Europe
+ from the API  -->
 
 <div class="soccer-season">
     <table>
@@ -261,6 +273,8 @@
         <% end %>
     </table>
 </div>
+<!--This division iterates through the players detail fo Leicester
+football club from the API  -->
 
 <div class="players-detail-leicester">
     <table>
@@ -291,7 +305,8 @@
         <% end %>
     </table>
 </div>
-<!--Fetch players Arsenal football club players detail from API  -->
+<!--This division iterates through the players detail fo Arsenal
+football club from the API  -->
 <div class="players-detail-arsenal">
     <table>
         <tr>
@@ -322,7 +337,8 @@
     </table>
 </div>
 
-<!--Fetch players Arsenal football club players detail from API  -->
+<!--This division iterates through the players detail fo Tottneham hotspur
+football club from the API  -->
 <div class="players-detail-tottenham">
     <table>
         <tr>
@@ -352,8 +368,8 @@
         <% end %>
     </table>
 </div>
-
-<!--Fetch players Man city football club players detail from API  -->
+<!--This division iterates through the players detail fo Manchister city
+football club from the API  -->
 <div class="players-detail-man-city">
     <table>
         <tr>

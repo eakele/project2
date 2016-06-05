@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<!--  -->
     <head>
         <title></title>
         <%= stylesheet_link_tag 'application', media: 'all',
@@ -8,13 +9,16 @@
         <%= javascript_include_tag 'application' %>
     </head>
     <body>
+      <!--The header of the website  -->
         <div id="header">
-            <h1>Football</h1>
+            <h1>Live Soccer </h1>
+            <h3>results, fixtures and more </h3>
         </div>
+        <!--left navigation bar  -->
         <nav>
             <ul id="nav">
-                <!-- <%= button_to "Sign up", new_users_path, :class => "button", :method => :get,class: 'btn-signup'  %>
-                <%= button_to "Log in", login_path %> -->
+               <%= button_to "Sign up", new_users_path, :class => "button", :method => :get,class: 'btn-signup'  %>
+                <!-- <%= button_to "Log in", login_path %>  -->
                 <%= button_to "Create New Contact",new_contact_path,:class => "button", :method => :get %>
                 <%= button_to "Edit Contact", another_show_path, :class => "button", :method => :get %>
                 <%= button_to "Log Out",:controller => 'sessions', :action => 'destroy' %>
@@ -34,7 +38,7 @@
             </ul>
 
         </nav>
-
+<!--where the content of all calles and routes appear  -->
         <div id="section">
             <%= yield %>
         </div>

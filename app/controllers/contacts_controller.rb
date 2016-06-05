@@ -39,21 +39,9 @@ class ContactsController < ApplicationController
     # fetch premier league table
     @premier_league = HTTParty.get("#{base_uri}/v1/soccerseasons/398/leagueTable",:headers => {"X-Auth-Token" => key })
   end
-  # Index page '/'
-  # def home
-  #   # grabbing API
-  #   base_uri = 'http://api.football-data.org'
-  #   key = '844aa49bbcfe45e284ab09b02bfce32b'
-  #   @soccer_season = HTTParty.get("#{base_uri}/v1/soccerseasons",:headers => {"X-Auth-Token" => key })
-  #   @teams = HTTParty.get("#{base_uri}/v1/soccerseasons/398/teams",:headers => {"X-Auth-Token" => key })
-  #   @premier_league = HTTParty.get("#{base_uri}/v1/soccerseasons/398/leagueTable",:headers => {"X-Auth-Token" => key })
-  # end
 
-  # def all
-  #   @contact.user_id = current_user.id
-  #   redirect_to '/contacts/show'
-  # end
   def show
+    # if a user click on edit contact button which is visible even before logged in
     if session[:user_id].nil?
       flash[:loginError] = "Please login or signup"
       redirect_to '/login'
@@ -113,7 +101,6 @@ class ContactsController < ApplicationController
     def set_contact
       @contact = Contact.find(params[:id])
     end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
       params.require(:contact).permit(:first_name, :last_name, :email, :phone_mobile, :user_id)
