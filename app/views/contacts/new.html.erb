@@ -1,7 +1,24 @@
-<% if flash[:errors] %>
-<p>
-    <%= flash[:errors] %></p>
+<% if session[:user_id].nil?%>
+<%flash[:contacterror] = "Please login or signup"%>
+<%= form_tag '/login' do%>
+<% if flash[:contacterror] %>
+<p><h3><%= flash[:contacterror]%></h3></p>
 <% end %>
+
+<div class="divTable">
+    <div class="divRow">
+        <div class="divCell">Email:</div>
+        <div class="divCell"><%= text_field_tag :email %></div>
+    </div>
+    <div class="divRow">
+        <div class="divCell">Password:</div>
+        <div class="divCell"><%= password_field_tag :password, '', :class=>"txt-password"%></div>
+    </div>
+    <%= submit_tag "Log In" %>
+</div>
+<%= link_to "Sign up", new_users_path, :class => "btn-signup" %>
+<% end %>
+<% else %>
 <h1>Newform</h1>
 <%= form_for :contact, url: '/contacts' do |f| %>
 <div class="divTable">
@@ -23,4 +40,5 @@
     </div>
     <%= submit_tag "Submit" %>
 </div>
+<% end %>
 <% end %>

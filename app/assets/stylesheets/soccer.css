@@ -3,7 +3,8 @@
   height: 70px;
   border-radius: 50%;
 }
-#leagu, #team, #season, #fixtures, #arsenal, #leicester,#totenham,#man-city, #players {
+#leagu, #team, #season, #fixtures, #arsenal, #leicester,#tottenham,#man-city,
+#players-leicester,#players-arsenal,#players-tottenham, #players-city {
   width: 180px;
   font-size: 14px;
   padding: 3px 4px;
@@ -33,11 +34,10 @@ h1 {
   text-align: center;
 }
 input[type=submit] {
-
     width: 180px;
     font-size: 14px;
     padding: 3px 4px;
-    background:#ccc;
+    background:rgb(150, 159, 163);
     border:0 none;
     cursor:pointer;
     -webkit-border-radius: 5px;
@@ -60,7 +60,12 @@ input[type=text]:focus {
     -webkit-border-radius: 5px;
     border-radius: 5px;
 }
-a
+.btn-signup {
+  text-decoration: none;
+  font-size: 16px;
+}
+/*apply this style for all a elements except the one with a class name of .btn-signup*/
+a:not(.btn-signup)
   {
     width: 180px;
     font-size: 14px;

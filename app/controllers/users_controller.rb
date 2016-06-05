@@ -8,7 +8,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to '/'
     else
-      flash[:error] = "The data that you enter is not valid!"
+      flash[:signuperror] = "The data that you enter is not valid!"
       redirect_to '/users/new'
     end
   end

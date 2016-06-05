@@ -13,13 +13,23 @@
         </div>
         <nav>
             <ul id="nav">
-                <%= button_to "Edit Contact", edit_contact_path(session[:user_id]),:class => "button", :method => :get %>
-                <%= button_to "Log in", login_path %>
-                <%= button_to "Log Out",:controller => 'sessions', :action => 'destroy' %>
+                <!-- <%= button_to "Sign up", new_users_path, :class => "button", :method => :get,class: 'btn-signup'  %>
+                <%= button_to "Log in", login_path %> -->
                 <%= button_to "Create New Contact",new_contact_path,:class => "button", :method => :get %>
+                <%= button_to "Edit Contact", another_show_path, :class => "button", :method => :get %>
+                <%= button_to "Log Out",:controller => 'sessions', :action => 'destroy' %>
                 <%= button_to "Home",root_path,:class => "button", :method => :get %>
-                <div class="selected-team">
-                    <button id="players" type="submit">View Players</button>
+                <div class="selected-team-leicester">
+                    <button id="players-leicester" type="submit">Leicester Players</button>
+                </div>
+                <div class="selected-team-arsenal">
+                    <button id="players-arsenal" type="submit">Arsenal Players</button>
+                </div>
+                <div class="selected-team-tottenham">
+                    <button id="players-tottenham" type="submit">Tottenham Players</button>
+                </div>
+                <div class="selected-team-city">
+                    <button id="players-city" type="submit">Man City Players</button>
                 </div>
             </ul>
 

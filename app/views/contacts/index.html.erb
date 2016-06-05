@@ -1,8 +1,9 @@
 <h1></h1>
 <% if session[:user_id].nil?%>
+<%flash[:error] = "Please login or signup"%>
 <%= form_tag '/login' do%>
 <% if flash[:error] %>
-<p><%= flash[:error]%></p>
+<p><h3><%= flash[:error]%></h3></p>
 <% end %>
 <% if flash[:message]%>
 <p><%= flash[:message]%></p>
@@ -18,6 +19,7 @@
     </div>
     <%= submit_tag "Log In" %>
 </div>
+<%= link_to "Sign up", new_users_path, :class => "btn-signup" %>
 <% end %>
 <% else %>
 <br>
@@ -35,7 +37,7 @@
 <div class="top-four">
     <button id="leicester" type="submit">Leicester City</button>
     <button id="arsenal" type="submit">Arsenal</button>
-    <button id="totenham" type="submit">Tottenham Hotspur</button>
+    <button id="tottenham" type="submit">Tottenham Hotspur</button>
     <button id="man-city" type="submit">Manchester City</button>
 </div>
 
@@ -105,14 +107,14 @@
     </table>
 </div>
 
-<div class='totenham-fixtures'>
+<div class='tottenham-fixtures'>
     <table>
         <tr>
             <th colspan="4">
                 <h3>Tottenham Hotspur FC fixtures</h3>
             </th>
             <th colspan="4">
-                <img class="thumbnail" src="<%= @totenham_logo["crestUrl"]%>" alt="">
+                <img class="thumbnail" src="<%= @tottenham_logo["crestUrl"]%>" alt="">
             </th>
         </tr>
         <tr>
@@ -124,15 +126,15 @@
             <th>Home team result</th>
             <th>Away team result</th>
         </tr>
-        <% @totenham["count"].to_i.times do |i|%>
+        <% @tottenham["count"].to_i.times do |i|%>
         <tr>
-            <td><%= @totenham['fixtures'][i]['date']%></td>
-            <td><%= @totenham['fixtures'][i]['status'] %></td>
-            <td><%= @totenham['fixtures'][i]['matchday'] %></td>
-            <td><%= @totenham['fixtures'][i]['homeTeamName'] %></td>
-            <td><%= @totenham['fixtures'][i]['awayTeamName']%></td>
-            <td><%= @totenham['fixtures'][i]['result']['goalsHomeTeam'] %></td>
-            <td><%= @totenham['fixtures'][i]['result']['goalsAwayTeam']%></td>
+            <td><%= @tottenham['fixtures'][i]['date']%></td>
+            <td><%= @tottenham['fixtures'][i]['status'] %></td>
+            <td><%= @tottenham['fixtures'][i]['matchday'] %></td>
+            <td><%= @tottenham['fixtures'][i]['homeTeamName'] %></td>
+            <td><%= @tottenham['fixtures'][i]['awayTeamName']%></td>
+            <td><%= @tottenham['fixtures'][i]['result']['goalsHomeTeam'] %></td>
+            <td><%= @tottenham['fixtures'][i]['result']['goalsAwayTeam']%></td>
         </tr>
         <% end %>
     </table>
@@ -172,8 +174,12 @@
 </div>
 
 <div class='leagu'>
-    <h3><%= @premier_league['leagueCaption']%></h3>
-    <table>
+      <table>
+      <tr>
+        <th colspan="10">
+          <h3><%= @premier_league['leagueCaption']%></h3>
+        </th>
+      </tr>
         <tr>
             <th>Position</th>
             <th>Team Name</th>
@@ -206,7 +212,10 @@
 <div class="team">
     <table>
         <tr>
+          <th colspan="5">
             <h3>Teams detail</h3>
+          </th>
+
         </tr>
         <tr>
             <th>Team Name</th>
@@ -221,7 +230,7 @@
             <td><%= @teams["teams"][i]["code"]%></td>
             <td><%= @teams["teams"][i]["shortName"]%></td>
             <td><%= @teams["teams"][i]["squadMarketValue"]%></td>
-            <td><img class="thumbnail" src="<%= @teams["teams"][i][" crestUrl"]%>" alt=""></td>
+            <td><img class="thumbnail" src="<%= @teams["teams"][i]["crestUrl"]%>" alt=""></td>
         </tr>
         <% end %>
     </table>
@@ -230,7 +239,9 @@
 <div class="soccer-season">
     <table>
         <tr>
-            <h3>Leagues and stats</h3>
+          <th colspan="5">
+            <h3>Leagues and Stats</h3>
+          </th>
         </tr>
         <tr>
             <th>Caption</th>
@@ -251,8 +262,126 @@
     </table>
 </div>
 
-<!-- <button>
-    <a href="/contacts/show">View Contact</a>
-</button> -->
+<div class="players-detail-leicester">
+    <table>
+        <tr>
+          <th colspan="7">
+            <h3>Leicester City FC Players and their position</h3>
+          </th>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Jersy Number</th>
+            <th>Date of Birth</th>
+            <th>Nationality</th>
+            <th>Contract Until</th>
+            <th>Market Value</th>
+        </tr>
+        <% @leicester_players["count"].to_i.times do |i|%>
+        <tr>
+            <td><%=@leicester_players["players"][i]["name"] %></td>
+            <td><%=@leicester_players["players"][i]["position"] %></td>
+            <td><%=@leicester_players["players"][i]["jerseyNumber"] %></td>
+            <td><%=@leicester_players["players"][i]["dateOfBirth"] %></td>
+            <td><%=@leicester_players["players"][i]["nationality"] %></td>
+            <td><%=@leicester_players["players"][i]["contractUntil"] %></td>
+            <td><%=@leicester_players["players"][i]["marketValue"] %></td>
+        </tr>
+        <% end %>
+    </table>
+</div>
+<!--Fetch players Arsenal football club players detail from API  -->
+<div class="players-detail-arsenal">
+    <table>
+        <tr>
+          <th colspan="7">
+            <h3>Arsenal FC Players and their position</h3>
+          </th>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Jersy Number</th>
+            <th>Date of Birth</th>
+            <th>Nationality</th>
+            <th>Contract Until</th>
+            <th>Market Value</th>
+        </tr>
+        <% @arsenal_players["count"].to_i.times do |i|%>
+        <tr>
+            <td><%=@arsenal_players["players"][i]["name"] %></td>
+            <td><%=@arsenal_players["players"][i]["position"] %></td>
+            <td><%=@arsenal_players["players"][i]["jerseyNumber"] %></td>
+            <td><%=@arsenal_players["players"][i]["dateOfBirth"] %></td>
+            <td><%=@arsenal_players["players"][i]["nationality"] %></td>
+            <td><%=@arsenal_players["players"][i]["contractUntil"] %></td>
+            <td><%=@arsenal_players["players"][i]["marketValue"] %></td>
+        </tr>
+        <% end %>
+    </table>
+</div>
+
+<!--Fetch players Arsenal football club players detail from API  -->
+<div class="players-detail-tottenham">
+    <table>
+        <tr>
+          <th colspan="7">
+            <h3>Tottenham Hotspur FC players and their position</h3>
+          </th>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Jersy Number</th>
+            <th>Date of Birth</th>
+            <th>Nationality</th>
+            <th>Contract Until</th>
+            <th>Market Value</th>
+        </tr>
+        <% @tottenham_players["count"].to_i.times do |i|%>
+        <tr>
+            <td><%=@tottenham_players["players"][i]["name"] %></td>
+            <td><%=@tottenham_players["players"][i]["position"] %></td>
+            <td><%=@tottenham_players["players"][i]["jerseyNumber"] %></td>
+            <td><%=@tottenham_players["players"][i]["dateOfBirth"] %></td>
+            <td><%=@tottenham_players["players"][i]["nationality"] %></td>
+            <td><%=@tottenham_players["players"][i]["contractUntil"] %></td>
+            <td><%=@tottenham_players["players"][i]["marketValue"] %></td>
+        </tr>
+        <% end %>
+    </table>
+</div>
+
+<!--Fetch players Man city football club players detail from API  -->
+<div class="players-detail-man-city">
+    <table>
+        <tr>
+          <th colspan="7">
+            <h3>Manchester city FC players and their position</h3>
+          </th>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Jersy Number</th>
+            <th>Date of Birth</th>
+            <th>Nationality</th>
+            <th>Contract Until</th>
+            <th>Market Value</th>
+        </tr>
+        <% @man_city_players["count"].to_i.times do |i|%>
+        <tr>
+            <td><%=@man_city_players["players"][i]["name"] %></td>
+            <td><%=@man_city_players["players"][i]["position"] %></td>
+            <td><%=@man_city_players["players"][i]["jerseyNumber"] %></td>
+            <td><%=@man_city_players["players"][i]["dateOfBirth"] %></td>
+            <td><%=@man_city_players["players"][i]["nationality"] %></td>
+            <td><%=@man_city_players["players"][i]["contractUntil"] %></td>
+            <td><%=@man_city_players["players"][i]["marketValue"] %></td>
+        </tr>
+        <% end %>
+    </table>
+</div>
 
 <% end %>

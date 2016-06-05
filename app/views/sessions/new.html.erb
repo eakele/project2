@@ -4,6 +4,9 @@
 <% if flash[:error] %>
     <div class="alert"><%= flash[:error] %></div>
 <% end %>
+<% if flash[:loginError] %>
+<p><h3><%= flash[:loginError]%></h3></p>
+<% end %>
 <%= form_tag '/login',class: "login", method: "post" do %>
 <div class="divTable">
     <div class="divRow">
@@ -16,4 +19,5 @@
     </div>
     <%= submit_tag "Log In" %>
 </div>
+<%= link_to "Sign up", new_users_path, :class => "btn-signup" %>
 <% end %>

@@ -7,10 +7,19 @@ class ContactsController < ApplicationController
     @user = current_user
     base_uri = 'http://api.football-data.org'
     key = '844aa49bbcfe45e284ab09b02bfce32b'
+    # fetch players detail of leicester city football club
+    @leicester_players = HTTParty.get("#{base_uri}/v1/teams/338/players",:headers => {"X-Auth-Token" => key })
+    # fetch players detail of arsenal football club
+    @arsenal_players = HTTParty.get("#{base_uri}/v1/teams/57/players",:headers => {"X-Auth-Token" => key })
+    # fetch log of tottenham hotspur football club
+    @tottenham_players = HTTParty.get("#{base_uri}/v1/teams/73/players",:headers => {"X-Auth-Token" => key })
     # fetch log of leicester city football club
+    @man_city_players = HTTParty.get("#{base_uri}/v1/teams/65/players",:headers => {"X-Auth-Token" => key })
+    # fetch log of leicester city football club
+
     @leicester_logo = HTTParty.get("#{base_uri}/v1/teams/338",:headers => {"X-Auth-Token" => key })
     # fetch log of totenham hotspur football club
-    @totenham_logo = HTTParty.get("#{base_uri}/v1/teams/73",:headers => {"X-Auth-Token" => key })
+    @tottenham_logo = HTTParty.get("#{base_uri}/v1/teams/73",:headers => {"X-Auth-Token" => key })
     # fetch log of arsenal football club
     @arsenal_logo = HTTParty.get("#{base_uri}/v1/teams/57",:headers => {"X-Auth-Token" => key })
     # fetch log of manchister city football club
@@ -20,7 +29,7 @@ class ContactsController < ApplicationController
     # fetch fixtures of arsenal football club
     @arsenal = HTTParty.get("#{base_uri}/v1/teams/57/fixtures",:headers => {"X-Auth-Token" => key })
     # fetch fixtures of totenham football club
-    @totenham = HTTParty.get("#{base_uri}/v1/teams/73/fixtures",:headers => {"X-Auth-Token" => key })
+    @tottenham = HTTParty.get("#{base_uri}/v1/teams/73/fixtures",:headers => {"X-Auth-Token" => key })
     # fetch fixtures of manchister city football club
     @man_city_fixture = HTTParty.get("#{base_uri}/v1/teams/65/fixtures",:headers => {"X-Auth-Token" => key })
     # fetch all soccer in a season
@@ -41,11 +50,16 @@ class ContactsController < ApplicationController
   # end
 
   # def all
-  #   @contacts = Contact.where(user_id: current_user.id)
-  #   render :show
+  #   @contact.user_id = current_user.id
+  #   redirect_to '/contacts/show'
   # end
   def show
-    @contacts = Contact.where(user_id: current_user.id)
+    if session[:user_id].nil?
+      flash[:loginError] = "Please login or signup"
+      redirect_to '/login'
+    else
+      @contacts = Contact.where(user_id: current_user.id)
+    end
   end
   # GET /contacts/new
   def new
