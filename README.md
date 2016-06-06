@@ -3,14 +3,14 @@
 ##Functionality
 ###Sign up new users
  users have to sign up using a sign up form by entering their
-*Name
-*Email and
-*Password
+* Name
+* Email and
+* Password
 
 ###Authenticate registered users
  once signed up users need to sing in using
-  Email as a user name and
-  Password   
+* Email as a user name and
+* Password   
 ###Fetch live data from the API and present it in a user understandable format
 ###English Premier leagu table
   shows the full table of the English Premier leagu like points, goals, game won, game lost etc.
@@ -34,17 +34,19 @@
 ###View and edit saved contact
    A user can view, update and delete his/her contacts
 ##Database structure
- There are two tables in the system which are: users table
+ There are two tables in the system which are:* users table
 
 | user_id      | name          | password    |
 | -------------|:-------------:| ---------:  |
 | user1        |Jhon            |password    |
 
-  contact table   
+* contact table   
 
 | id           | first_name    |last_name      |email             |phone_no         |user_id     |
 |------------- |:-------------:|:------------- | :---------------:|:---------------:|-----------:|
 |contact1      |    Smith      |     Greg      |smith_g@yahoo.com |+12 312 131 123  |user1      |
+|contact2      |    Tony       |     Hans      |tonyh@hotmail.com |+61 453 234 823  |user1      |
+
 
   one user can have many contacts so the relationship is one to many. There is user_id
   from a user tabel as a foreign key in contact table.
