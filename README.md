@@ -2,13 +2,13 @@
 
 ##Functionality
 ###Sign up new users
- users have to sign up using a sign up form by entering their
+ users have to sign up to the system by entering their
 * Name
 * Email and
 * Password
 
 ###Authenticate registered users
- once signed up users need to sing to use the application using their
+ once signed up, users need to login to use the application using their
 * Email as a user name and
 * Password  
 
@@ -38,7 +38,9 @@ Under fixtures there are four functionality focused on the top four teams in the
 * View and edit saved contact
    A user can view, update and delete his/her contacts
 ##Database structure
- There are two tables in the system which are:* users table
+ There are two tables in the system which are:
+
+ * users table
 
 | user_id      | name          | password    |
 | -------------|:-------------:| ---------:  |
