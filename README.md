@@ -15,23 +15,36 @@
 ###Fetch live data from the API and present it in a user understandable format
 
 * English Premier leagu table
+
 shows the full table of the English Premier leagu like points, goals, game won, game lost etc.
 
 * Detail of participating teams in the English Premier leagu
+
 shows each participating team in detail
 
 * Game details in a specific season in Europe
 * Fixures
+
 Under fixtures there are four functionality focused on the top four teams in the premier leagu
+
 **Leicester City FC**
+
     More details of a team that finishes as a leader last season, using these functionality users can see players details, fixtures, results etc.
+
 **Arsenal FC**
+
    Players details, Fixures, results etc.
+
 **Tottenham hotspur**  
+
    Players details, Fixures, results etc.
+
 **Manchister City**
+
    Players details, Fixures, results etc.
+
 ###Contact Managment
+
  these functinality is independet of the API it is here as an extra service for users. Under these there are two functionality
 * Create new contact
    A user with an account can create a contact and save it to the system
