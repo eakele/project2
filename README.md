@@ -37,13 +37,14 @@
  There are two tables in the system which are: users table
 
 | user_id      | name          | password    |
-| user 1       |Ephrem         |             |
+| -------------|:-------------:| ---------:  |
+| user1        |Jhon            |password    |
 
   contact table   
 
-| id           |first_name    |last_name   |email              |phone_no        |user_id     |
-|contact 1     |Jhon          |Smith       |jsmith@hotmail.com |+243 32 23 23   |user 1      |           
-|contact 2     |Alen          |Charlles    |hd_ch@yahoo.com    |+61 292 312 121 |user 1      |
+| id           | first_name    |last_name      |email             |phone_no         |user_id     |
+|------------- |:-------------:|:------------- | :---------------:|:---------------:|-----------:|
+|contact1      |    Smith      |     Greg      |smith_g@yahoo.com |+12 312 131 123  |user1      |
 
   one user can have many contacts so the relationship is one to many. There is user_id
   from a user tabel as a foreign key in contact table.
