@@ -3,9 +3,9 @@
 ##Functionality
 ###Sign up new users
  users have to sign up using a sign up form by entering their
-..*Name
-..*Email and
-..*Password
+*Name
+*Email and
+*Password
 
 ###Authenticate registered users
  once signed up users need to sing in using
@@ -37,14 +37,13 @@
  There are two tables in the system which are: users table
 
 | user_id      | name          | password    |
-| -------------|:-------------:| -----:      |
-| -------------|:-------------:| -----:      |
+| user 1       |Ephrem         |             |
 
   contact table   
 
-| id           |: first_name    |last_name      |email         |phone_no    |user_id     |
-|------------- |:--------------:|:------------- | :----------:|:-----------:|-----------:|
-|------------- |:--------------:|:------------- | :----------:|:-----------:|-----------:|
+| id           |first_name    |last_name   |email              |phone_no        |user_id     |
+|contact 1     |Jhon          |Smith       |jsmith@hotmail.com |+243 32 23 23   |user 1      |           
+|contact 2     |Alen          |Charlles    |hd_ch@yahoo.com    |+61 292 312 121 |user 1      |
 
   one user can have many contacts so the relationship is one to many. There is user_id
   from a user tabel as a foreign key in contact table.
