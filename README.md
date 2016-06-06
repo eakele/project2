@@ -34,14 +34,17 @@
 ###View and edit saved contact
    A user can view, update and delete his/her contacts
 ##Database structure
- There are two tables in the system which are:
-  users |id        | name           |password        |
-  | :------------- | :------------- | :------------- |
-  | Item One       | Item Two       |Item three      |
+ There are two tables in the system which are: users table
 
-  contacts | id | first_name   |last_name| email| phone number |user_id
-  | :------------- | :-------- | :------------- | :----------- |:-------- |
-  | Item One       | Item Two  | Item Two       | Item Two     |Item Two  |
+| user_id      | name          | password    |
+| -------------|:-------------:| -----:      |
+| -------------|:-------------:| -----:      |
+
+  contact table   
+
+| id           |: first_name    |last_name      |email         |phone_no    |user_id     |
+|------------- |:--------------:|:------------- | :----------:|:-----------:|-----------:|
+|------------- |:--------------:|:------------- | :----------:|:-----------:|-----------:|
 
   one user can have many contacts so the relationship is one to many. There is user_id
   from a user tabel as a foreign key in contact table.
