@@ -3,9 +3,9 @@
 ##Functionality
 ###Sign up new users
  users have to sign up using a sign up form by entering their
-  Name
-  Email and
-  Password
+   *Name
+   *Email and
+   *Password
 
 ###Authenticate registered users
  once signed up users need to sing in using
