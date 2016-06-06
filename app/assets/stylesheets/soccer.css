@@ -1,5 +1,5 @@
 .thumbnail {
-    width: 70px;
+    width: 90px;
     height: 70px;
     border-radius: 50%;
 }
@@ -12,6 +12,9 @@
     cursor: pointer;
     -webkit-border-radius: 5px;
     border-radius: 5px;
+}
+#xx {
+  visibility: hidden;
 }
 .nav-top {
     width: 100%;
@@ -119,7 +122,7 @@ body {
     background-image: url("http://blogs.bmj.com/bjsm/files/2014/08/football-on-the-stadium-4565.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center;
 }
 #section {
     width: 350px;
@@ -134,12 +137,20 @@ body {
     padding: 5px;
 }
 table {
+    display: block;
     color: #333;
     font-family: Helvetica, Arial, sans-serif;
     width: 730px;
     border-collapse: collapse;
     border-spacing: 0;
 }
+tbody {
+  display: block;
+  height: 400px;
+  overflow: auto;
+  width: 100%;
+}
+
 td, th {
     border: 1px solid transparent;
     height: 30px;
@@ -153,6 +164,7 @@ td {
     background: #FAFAFA;
     text-align: center;
 }
+
 tr:nth-child(even) td {
     background: #F1F1F1;
 }

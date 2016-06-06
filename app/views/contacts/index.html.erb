@@ -222,7 +222,7 @@ that have more detail of each football club from the API  -->
 <div class="team">
     <table>
         <tr>
-          <th colspan="5">
+          <th colspan="6">
             <h3>Teams detail</h3>
           </th>
 
@@ -233,6 +233,7 @@ that have more detail of each football club from the API  -->
             <th>Short Name</th>
             <th>Squad Market Value</th>
             <th>Team Logo</th>
+            <th  id="xx">Premier Leagu</th>
         </tr>
         <% @teams["count"].to_i.times do |i| %>
         <tr>
@@ -241,6 +242,7 @@ that have more detail of each football club from the API  -->
             <td><%= @teams["teams"][i]["shortName"]%></td>
             <td><%= @teams["teams"][i]["squadMarketValue"]%></td>
             <td><img class="thumbnail" src="<%= @teams["teams"][i]["crestUrl"]%>" alt=""></td>
+            <td></td>
         </tr>
         <% end %>
     </table>
@@ -251,7 +253,7 @@ that have more detail of each football club from the API  -->
 <div class="soccer-season">
     <table>
         <tr>
-          <th colspan="5">
+          <th colspan="6">
             <h3>Leagues and Stats</h3>
           </th>
         </tr>
@@ -261,6 +263,7 @@ that have more detail of each football club from the API  -->
             <th>Number of Teams</th>
             <th>Number of Games</th>
             <th>Year</th>
+            <th id="xx">Premier Leagu</th>
         </tr>
         <%10.times do |i|%>
         <tr>
@@ -269,6 +272,7 @@ that have more detail of each football club from the API  -->
             <td><%=@soccer_season[i]["numberOfTeams"] %></td>
             <td><%=@soccer_season[i]["numberOfGames"] %></td>
             <td><%=@soccer_season[i]["year"] %></td>
+            <td></td>
         </tr>
         <% end %>
     </table>
