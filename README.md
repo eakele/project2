@@ -22,14 +22,15 @@ shows the full table of the English Premier leagu like points, goals, game won, 
 
 shows each participating team in detail
 
-* Game details in a specific season in Europe
-* Fixures
+* Game details in a specific season in Europe and
+* Fixtures
 
 Under fixtures there are four functionality focused on the top four teams in the premier leagu
 
 **Leicester City FC**
 
-    More details of a team that finishes as a leader last season, using these functionality users can see players details, fixtures, results etc.
+    More details of a team that finishes as a leader last season, using these functionality
+    users can see players details, fixtures, results etc.
 
 **Arsenal FC**
 
@@ -41,7 +42,7 @@ Under fixtures there are four functionality focused on the top four teams in the
 
 **Manchister City**
 
-   Players details, Fixures, results etc.
+   Players details, Fixtures, results etc.
 
 ###Contact Managment
 
@@ -67,5 +68,5 @@ Under fixtures there are four functionality focused on the top four teams in the
 |contact2      |    Tony       |     Hans      |tonyh@hotmail.com |+61 453 234 823  |user1      |
 
 
-  one user can have many contacts so the relationship is one to many. There is user_id
+  One user can have many contacts so the relationship is one to many. There is user_id column 
   from a user tabel as a foreign key in contact table.
